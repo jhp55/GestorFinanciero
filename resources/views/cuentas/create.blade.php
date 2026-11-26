@@ -1,1 +1,27 @@
-@extends('layouts.app') @section('title','Nueva cuenta') @section('content')<div class="mb-4"><h1 class="page-title h2">Nueva cuenta</h1><p class="text-muted">Registra efectivo, banco o billetera digital.</p></div><form method="POST" action="{{ route('cuentas.store') }}">@csrf @include('cuentas.form')</form>@endsection
+@extends('layouts.app')
+
+@section('title', 'Nueva cuenta')
+
+@section('content')
+
+<div class="mb-4">
+
+    <h1 class="page-title h2">
+        Nueva cuenta
+    </h1>
+
+    <p class="text-muted">
+        Registra efectivo, banco o billetera digital.
+    </p>
+
+</div>
+
+<form method="POST" action="{{ route('cuentas.store') }}">
+
+    @csrf
+
+    @include('cuentas.form')
+
+</form>
+
+@endsection

@@ -1,3 +1,78 @@
-<div class="card p-4"><div class="mb-3"><label class="form-label">Nombre *</label><input class="form-control" name="nombre" value="{{ old('nombre',$categoria->nombre) }}" maxlength="150" required placeholder="Ej. Alimentación"></div>
-<div class="mb-3"><label class="form-label">Tipo *</label><select class="form-select" name="tipo" required><option value="">Selecciona...</option><option value="ingreso" @selected(old('tipo',$categoria->tipo)==='ingreso')>Ingreso</option><option value="gasto" @selected(old('tipo',$categoria->tipo)==='gasto')>Gasto</option></select></div>
-<div class="mb-4"><label class="form-label">Descripción</label><input class="form-control" name="descripcion" value="{{ old('descripcion',$categoria->descripcion) }}" maxlength="255" placeholder="Descripción opcional"></div><button class="btn btn-success"><i class="bi bi-check-lg me-1"></i>Guardar</button> <a href="{{ route('categorias.index') }}" class="btn btn-light">Cancelar</a></div>
+<div class="card p-4">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Nombre *
+        </label>
+
+        <input
+            class="form-control"
+            name="nombre"
+            value="{{ old('nombre', $categoria->nombre) }}"
+            maxlength="150"
+            required
+            placeholder="Ej. Alimentación"
+        >
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Tipo *
+        </label>
+
+        <select class="form-select" name="tipo" required>
+
+            <option value="">
+                Selecciona...
+            </option>
+
+            <option
+                value="ingreso"
+                @selected(old('tipo', $categoria->tipo) === 'ingreso')
+            >
+                Ingreso
+            </option>
+
+            <option
+                value="gasto"
+                @selected(old('tipo', $categoria->tipo) === 'gasto')
+            >
+                Gasto
+            </option>
+
+        </select>
+
+    </div>
+
+    <div class="mb-4">
+
+        <label class="form-label">
+            Descripción
+        </label>
+
+        <input
+            class="form-control"
+            name="descripcion"
+            value="{{ old('descripcion', $categoria->descripcion) }}"
+            maxlength="255"
+            placeholder="Descripción opcional"
+        >
+
+    </div>
+
+    <button class="btn btn-success">
+
+        <i class="bi bi-check-lg me-1"></i>
+
+        Guardar
+
+    </button>
+
+    <a href="{{ route('categorias.index') }}" class="btn btn-light">
+        Cancelar
+    </a>
+
+</div>

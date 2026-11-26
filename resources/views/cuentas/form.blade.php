@@ -1,4 +1,89 @@
-<div class="card p-4"><div class="mb-3"><label class="form-label">Nombre *</label><input class="form-control" name="nombre" value="{{ old('nombre',$cuenta->nombre) }}" maxlength="150" required placeholder="Ej. Cuenta de ahorros"></div>
-<div class="mb-3"><label class="form-label">Descripción</label><input class="form-control" name="descripcion" value="{{ old('descripcion',$cuenta->descripcion) }}" maxlength="255"></div>
-<div class="row"><div class="col-md-6 mb-3"><label class="form-label">Saldo inicial / actual *</label><input class="form-control" type="number" step="0.01" min="0" name="saldo" value="{{ old('saldo',$cuenta->saldo ?? '0.00') }}" required></div><div class="col-md-6 mb-3"><label class="form-label">Moneda *</label><input class="form-control" name="moneda" maxlength="10" value="{{ old('moneda',$cuenta->moneda ?? 'COP') }}" required></div></div>
-<div class="alert alert-info small"><i class="bi bi-info-circle me-1"></i>El saldo se actualiza automáticamente al registrar, editar o eliminar movimientos. Si editas manualmente este campo, se establecerá el nuevo saldo de la cuenta.</div><button class="btn btn-success">Guardar cuenta</button> <a href="{{ route('cuentas.index') }}" class="btn btn-light">Cancelar</a></div>
+<div class="card p-4">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Nombre *
+        </label>
+
+        <input
+            class="form-control"
+            name="nombre"
+            value="{{ old('nombre', $cuenta->nombre) }}"
+            maxlength="150"
+            required
+            placeholder="Ej. Cuenta de ahorros"
+        >
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Descripción
+        </label>
+
+        <input
+            class="form-control"
+            name="descripcion"
+            value="{{ old('descripcion', $cuenta->descripcion) }}"
+            maxlength="255"
+        >
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+                Saldo inicial / actual *
+            </label>
+
+            <input
+                class="form-control"
+                type="number"
+                step="0.01"
+                min="0"
+                name="saldo"
+                value="{{ old('saldo', $cuenta->saldo ?? '0.00') }}"
+                required
+            >
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+                Moneda *
+            </label>
+
+            <input
+                class="form-control"
+                name="moneda"
+                maxlength="10"
+                value="{{ old('moneda', $cuenta->moneda ?? 'COP') }}"
+                required
+            >
+
+        </div>
+
+    </div>
+
+    <div class="alert alert-info small">
+
+        <i class="bi bi-info-circle me-1"></i>
+
+        El saldo se actualiza automáticamente al registrar, editar o eliminar movimientos. Si editas manualmente este campo, se establecerá el nuevo saldo de la cuenta.
+
+    </div>
+
+    <button class="btn btn-success">
+        Guardar cuenta
+    </button>
+
+    <a href="{{ route('cuentas.index') }}" class="btn btn-light">
+        Cancelar
+    </a>
+
+</div>

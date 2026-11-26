@@ -1,1 +1,49 @@
-@extends('layouts.app') @section('title','Nuevo movimiento') @section('content')<div class="mb-4"><h1 class="page-title h2">Nuevo movimiento</h1><p class="text-muted">Registra un ingreso o un gasto.</p></div>@if($cuentas->isEmpty()||$categorias->isEmpty())<div class="alert alert-warning">Antes de registrar movimientos debes crear al menos una cuenta y una categoría. <a href="{{ route('cuentas.create') }}">Crear cuenta</a> · <a href="{{ route('categorias.create') }}">Crear categoría</a></div>@else<form method="POST" action="{{ route('transacciones.store') }}">@csrf @include('transacciones.form')</form>@endif @endsection
+@extends('layouts.app')
+
+@section('title', 'Nuevo movimiento')
+
+@section('content')
+
+<div class="mb-4">
+
+    <h1 class="page-title h2">
+        Nuevo movimiento
+    </h1>
+
+    <p class="text-muted">
+        Registra un ingreso o un gasto.
+    </p>
+
+</div>
+
+@if($cuentas->isEmpty() || $categorias->isEmpty())
+
+    <div class="alert alert-warning">
+
+        Antes de registrar movimientos debes crear al menos una cuenta y una categoría.
+
+        <a href="{{ route('cuentas.create') }}">
+            Crear cuenta
+        </a>
+
+        ·
+
+        <a href="{{ route('categorias.create') }}">
+            Crear categoría
+        </a>
+
+    </div>
+
+@else
+
+    <form method="POST" action="{{ route('transacciones.store') }}">
+
+        @csrf
+
+        @include('transacciones.form')
+
+    </form>
+
+@endif
+
+@endsection

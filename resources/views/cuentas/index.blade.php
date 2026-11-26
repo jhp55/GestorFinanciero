@@ -1,5 +1,118 @@
-@extends('layouts.app') @section('title','Cuentas') @section('content')
-<div class="d-flex justify-content-between align-items-center mb-4"><div><h1 class="page-title h2 mb-1">Cuentas</h1><p class="text-muted mb-0">Consulta y administra tu dinero disponible.</p></div><a class="btn btn-success" href="{{ route('cuentas.create') }}"><i class="bi bi-plus-lg me-1"></i>Nueva cuenta</a></div>
-<div class="row g-3 mb-3">@foreach($cuentas as $c)<div class="col-md-6 col-xl-4"><div class="card p-4 h-100"><div class="d-flex justify-content-between"><div><div class="text-muted small">{{ $c->moneda }}</div><h5 class="fw-bold mt-1">{{ $c->nombre }}</h5></div><div class="stat-icon bg-success-subtle text-success"><i class="bi bi-bank"></i></div></div><div class="h3 fw-bold mb-1">${{ number_format((float)$c->saldo,2,',','.') }}</div><div class="small text-muted mb-3">{{ $c->transacciones_count }} movimientos · {{ $c->descripcion }}</div><div class="mt-auto d-flex gap-2"><a href="{{ route('cuentas.edit',$c) }}" class="btn btn-sm btn-outline-primary">Editar</a><form method="POST" action="{{ route('cuentas.destroy',$c) }}" onsubmit="return confirm('¿Eliminar esta cuenta?')">@csrf @method('DELETE')<button class="btn btn-sm btn-outline-danger">Eliminar</button></form></div></div></div>@endforeach</div>
-@if($cuentas->isEmpty())<div class="card p-5 text-center text-muted">No hay cuentas registradas. Crea una para comenzar.</div>@endif
+@extends('layouts.app')
+
+@section('title', 'Cuentas')
+
+@section('content')
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h1 class="page-title h2 mb-1">
+            Cuentas
+        </h1>
+
+        <p class="text-muted mb-0">
+            Consulta y administra tu dinero disponible.
+        </p>
+
+    </div>
+
+    <a class="btn btn-success" href="{{ route('cuentas.create') }}">
+
+        <i class="bi bi-plus-lg me-1"></i>
+
+        Nueva cuenta
+
+    </a>
+
+</div>
+
+<div class="row g-3 mb-3">
+
+    @foreach($cuentas as $c)
+
+        <div class="col-md-6 col-xl-4">
+
+            <div class="card p-4 h-100">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <div class="text-muted small">
+                            {{ $c->moneda }}
+                        </div>
+
+                        <h5 class="fw-bold mt-1">
+                            {{ $c->nombre }}
+                        </h5>
+
+                    </div>
+
+                    <div class="stat-icon bg-success-subtle text-success">
+
+                        <i class="bi bi-bank"></i>
+
+                    </div>
+
+                </div>
+
+                <div class="h3 fw-bold mb-1">
+
+                    ${{ number_format((float)$c->saldo, 2, ',', '.') }}
+
+                </div>
+
+                <div class="small text-muted mb-3">
+
+                    {{ $c->transacciones_count }} movimientos · {{ $c->descripcion }}
+
+                </div>
+
+                <div class="mt-auto d-flex gap-2">
+
+                    <a
+                        href="{{ route('cuentas.edit', $c) }}"
+                        class="btn btn-sm btn-outline-primary"
+                    >
+                        Editar
+                    </a>
+
+                    <form
+                        method="POST"
+                        action="{{ route('cuentas.destroy', $c) }}"
+                        onsubmit="return confirm('¿Eliminar esta cuenta?')"
+                    >
+
+                        @csrf
+
+                        @method('DELETE')
+
+                        <button class="btn btn-sm btn-outline-danger">
+                            Eliminar
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    @endforeach
+
+</div>
+
+@if($cuentas->isEmpty())
+
+    <div class="card p-5 text-center text-muted">
+
+        No hay cuentas registradas. Crea una para comenzar.
+
+    </div>
+
+@endif
+
 @endsection
