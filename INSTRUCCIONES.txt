@@ -1,0 +1,54 @@
+GESTOR FINANCIERO - LARAVEL 12
+================================
+
+REQUISITOS
+- PHP 8.2 o superior
+- Composer
+- MySQL (XAMPP funciona)
+- Node.js y npm (solo si deseas compilar los recursos originales de Breeze; la interfaz del sistema usa Bootstrap 5 por CDN)
+
+INSTALACIÓN EN WINDOWS / XAMPP
+1. Descomprime GestorFinanciero.zip.
+2. Abre la carpeta GestorFinanciero en VS Code.
+3. Enciende Apache y MySQL desde XAMPP.
+4. En phpMyAdmin crea una base de datos llamada: gestor_financiero
+   Cotejamiento recomendado: utf8mb4_unicode_ci
+5. En la terminal, dentro de la carpeta del proyecto, ejecuta:
+   composer install
+6. Copia .env.example y pega una copia llamada .env (si ya existe .env, edítalo).
+7. En .env verifica:
+   APP_NAME="Gestor Financiero"
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=gestor_financiero
+   DB_USERNAME=root
+   DB_PASSWORD=
+8. Ejecuta:
+   php artisan key:generate
+   php artisan config:clear
+   php artisan migrate
+   php artisan db:seed
+9. Inicia:
+   php artisan serve
+10. Abre http://127.0.0.1:8000
+
+USUARIO DE PRUEBA
+Correo: demo@gestor.com
+Contraseña: password
+
+IMPORTANTE
+- Cambia la contraseña del usuario demo después de la prueba.
+- No ejecutes migrate:fresh en una base de datos que contenga información que quieras conservar.
+- La base de datos se crea mediante migraciones. No debes importar un SQL para construir las tablas.
+- Bootstrap 5 se carga desde CDN, por lo que necesitas conexión a internet al visualizar la interfaz.
+- Las tres tablas solicitadas son categorias, cuentas y transacciones. Los nombres de columnas y relaciones corresponden al enunciado del taller.
+- El seeder crea 5 categorías, 3 cuentas y 5 transacciones. En la cuenta principal verifica: saldo inicial $200.000 + ingreso $150.000 - gasto $20.000 = $330.000.
+
+PRUEBA DE FUNCIONAMIENTO
+1. Inicia sesión.
+2. En Cuentas revisa Cuenta principal: $330.000.
+3. En Movimientos edita o elimina un movimiento de prueba.
+4. Comprueba que el saldo se recalcula.
+5. Intenta registrar un gasto superior al saldo: debe aparecer una alerta de validación.
+6. Intenta eliminar una cuenta o categoría con movimientos: el sistema debe impedirlo.

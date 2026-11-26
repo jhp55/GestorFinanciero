@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('title','Nueva categoría') @section('content')<div class="mb-4"><h1 class="page-title h2">Nueva categoría</h1><p class="text-muted">Completa la información de la categoría.</p></div><form method="POST" action="{{ route('categorias.store') }}">@csrf @include('categorias.form')</form>@endsection

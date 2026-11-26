@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('title','Editar categoría') @section('content')<div class="mb-4"><h1 class="page-title h2">Editar categoría</h1><p class="text-muted">Modifica los datos registrados.</p></div><form method="POST" action="{{ route('categorias.update',$categoria) }}">@csrf @method('PUT') @include('categorias.form')</form>@endsection
